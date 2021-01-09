@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { Link } from "@reach/router";
 
-const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
+const SignIn = () => { //Has three pieces of state:
+    const [email, setEmail] = useState(''); //For storing user email
+    const [password, setPassword] = useState(''); //For storing user password
+    const [error, setError] = useState(null);//For displaying error message 
     const signInWithEmailAndPasswordHandler = 
             (event,email, password) => {
                 event.preventDefault();
@@ -62,7 +62,9 @@ const SignIn = () => {
         </button>
         <p className="text-center my-3">
           Don't have an account?{" "}
-          <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+          {/*Link component that Reach Router provides:similar to the anchor element in HTML, 
+          and similar in function to the href attribute of the anchor element.*/}
+          <Link to="signUp" className="text-blue-500 hover:text-blue-600"> 
             Sign up here
           </Link>{" "}
           <br />{" "}
@@ -74,4 +76,5 @@ const SignIn = () => {
     </div>
   );
 };
+
 export default SignIn;
