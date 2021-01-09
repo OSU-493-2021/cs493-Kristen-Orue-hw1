@@ -25,7 +25,7 @@ function App() {
           onClick={async function() {
             const user = await firebase
               .auth()
-              .createUserWithEmailAndPassword("tester@tester.com", "Test1234")
+              .createUserWithEmailAndPassword("teworster@tester.com", "Test1234")
             alert(JSON.stringify(user));
           }}
         >
