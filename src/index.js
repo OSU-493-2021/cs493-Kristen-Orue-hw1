@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import './Styles/components.css';
 //import { Router, Link } from "@reach/router";
 
 ReactDOM.render(
