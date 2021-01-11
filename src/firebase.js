@@ -1,6 +1,10 @@
-import firebase from "firebase/app";
+// import firebase from "firebase/app";
+import firebase from 'firebase';
 import "firebase/auth";
 import "firebase/firestore";
+import 'firebase/app';
+import { functions } from "firebase";
+
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -15,6 +19,9 @@ const firebaseConfig = {
 
 //Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -25,10 +32,8 @@ export const signInWithGoogle = () => {
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
-
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
-
   if (!snapshot.exists) {
     const { email, displayName, photoURL } = user;
     try {
@@ -49,7 +54,6 @@ const getUserDocument = async uid => {
   if (!uid) return null;
   try {
     const userDocument = await firestore.doc(`users/${uid}`).get();
-
     return {
       uid,
       ...userDocument.data()

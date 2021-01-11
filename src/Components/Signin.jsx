@@ -18,20 +18,20 @@ const SignIn = () => { //Has three pieces of state:
                 });
     };
 
-      const onChangeHandler = (event) => {
-          const {name, value} = event.currentTarget;
+    const onChangeHandler = (event) => {
+        const {name, value} = event.currentTarget;
 
-          if(name === 'userEmail') {
-              setEmail(value);
-          }
-          else if(name === 'userPassword'){
-            setPassword(value);
-          }
-      };
+        if(name === 'userEmail') {
+            setEmail(value);
+        }
+        else if(name === 'userPassword'){
+          setPassword(value);
+        }
+    };
 
   return (
     <div className="container">
-      <h1 className="email-button">Sign In</h1>
+      <h1>Sign In</h1>
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
         <form className="">
