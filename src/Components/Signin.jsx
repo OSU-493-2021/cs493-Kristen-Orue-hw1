@@ -22,42 +22,42 @@ const SignIn = () => { //Has three pieces of state:
       };
 
   return (
-    <div className="content-center">
-      <h1 className="text-3xl mb-2 text-center font-bold">Sign In</h1>
+    <div className="container">
+      <h1 className="email-button">Sign In</h1>
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
         <form className="">
-          <label htmlFor="userEmail" className="block">
+          {/* <label htmlFor="userEmail" className="block">
             Email:
-          </label>
+          </label> */}
           <input
             type="email"
-            className="my-1 p-1 w-full"
+            className="signin-field"
             name="userEmail"
             value = {email}
-            placeholder="Your Email"
+            placeholder="Email"
             id="userEmail"
             onChange = {(event) => onChangeHandler(event)}
           />
-          <label htmlFor="userPassword" className="block">
+          {/* <label htmlFor="userPassword" className="block">
             Password:
-          </label>
+          </label> */}
           <input
             type="password"
-            className="mt-1 mb-3 p-1 w-full"
+            className="signin-field"
             name="userPassword"
             value = {password}
-            placeholder="Your Password"
+            placeholder="Password"
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
           />
-          <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
+          <button className="button" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
             Sign in
           </button>
         </form>
         <p className="text-center my-3">or</p>
         <button
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
+          className="button-google">
           Sign in with Google
         </button>
         <p className="text-center my-3">
