@@ -1,13 +1,21 @@
 import React, {useState} from "react";
 import { Link } from "@reach/router";
+import { signInWithGoogle } from "../firebase";
+import { auth } from "../firebase";
+
 
 const SignIn = () => { //Has three pieces of state:
     const [email, setEmail] = useState(''); //For storing user email
     const [password, setPassword] = useState(''); //For storing user password
     const [error, setError] = useState(null);//For displaying error message 
+
     const signInWithEmailAndPasswordHandler = 
             (event,email, password) => {
                 event.preventDefault();
+                auth.signInWithEmailAndPassword(email, password).catch(error => {
+                  setError("Error signing in with password and email!");
+                    console.error("Error signing in with password and email", error);
+                });
     };
 
       const onChangeHandler = (event) => {
@@ -27,9 +35,6 @@ const SignIn = () => { //Has three pieces of state:
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
         <form className="">
-          {/* <label htmlFor="userEmail" className="block">
-            Email:
-          </label> */}
           <input
             type="email"
             className="signin-field"
@@ -39,9 +44,7 @@ const SignIn = () => { //Has three pieces of state:
             id="userEmail"
             onChange = {(event) => onChangeHandler(event)}
           />
-          {/* <label htmlFor="userPassword" className="block">
-            Password:
-          </label> */}
+          <br></br>
           <input
             type="password"
             className="signin-field"
@@ -50,13 +53,26 @@ const SignIn = () => { //Has three pieces of state:
             placeholder="Password"
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
-          />
-          <button className="button" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-            Sign in
-          </button>
+          />      
         </form>
-        <p className="text-center my-3">or</p>
+
+        <div classname="signin-signup-buttons">
+        <button className="button-email" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
+            Sign In
+        </button>
+        <button className="button-email" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
+            SignUp
+        </button>
+        </div>
+
         <button
+          onClick={() => {
+            try {
+              signInWithGoogle();
+            } catch (error) {
+              console.error("Error signing in with Google", error);
+            }
+          }}
           className="button-google">
           Sign in with Google
         </button>

@@ -53,11 +53,11 @@ const SignUp = () => {
             className="my-1 p-1 w-full "
             name="displayName"
             value={displayName}
-            placeholder="E.g: Faruq"
+            placeholder="Name"
             id="displayName"
             onChange={event => onChangeHandler(event)}
           />
-          <label htmlFor="userEmail" className="block">
+          <label htmlFor="Email" className="block">
             Email:
           </label>
           <input
